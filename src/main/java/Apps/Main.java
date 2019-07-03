@@ -10,6 +10,12 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
+        addPerson();
+    }
+
+
+
+    private static void addPerson() {
         try {
             Connection connection = DB_Connection_JDBC_MySQL.getConnection();
             Person_MySQL_DAO entity = new Person_MySQL_DAO(connection);

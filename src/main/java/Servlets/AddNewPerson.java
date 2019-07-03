@@ -9,21 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @WebServlet("/addnewperson")
 public class AddNewPerson extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String a = request.getParameter("name");
-        String b = request.getParameter("number");
-        String c = request.getParameter("address");
-        String d = request.getParameter("date");
+        String name = request.getParameter("name");
+        String number = request.getParameter("number");
+        String address = request.getParameter("address");
+        String date = request.getParameter("date");
 
-        if (!a.equals("") && !b.equals("") && !c.equals("") && !d.equals("")) {
-            Person_MySQL_DAO person_mySQL_dao = new Person_MySQL_DAO(DB_Connection_JDBC_MySQL.getConnection());
-            person_mySQL_dao.create(new Person(a, Integer.valueOf(b), c, d));
-            response.sendRedirect("index.jsp");
+        if (!name.equals("") && !number.equals("") && !address.equals("") && !date.equals("")) {
+            try (Connection connection = DB_Connection_JDBC_MySQL.getConnection()) {
+                Person_MySQL_DAO entity = new Person_MySQL_DAO(connection);
+                entity.create(new Person(name, Integer.valueOf(number), address, date));
+                response.sendRedirect("index.jsp");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }else {
             response.sendRedirect("AddPerson.jsp");
         }

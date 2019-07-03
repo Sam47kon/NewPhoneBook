@@ -17,10 +17,10 @@ public class Person_MySQL_DAO implements DAO_CRUD<Person, Integer> {
     public void create(Person person) {
         try (PreparedStatement preparedStatement = connection
                 .prepareStatement("INSERT INTO persons (name, number, address, date) VALUES ( ?, ?, ?, ?)")) {
-            preparedStatement.setObject(1, person.getName());
-            preparedStatement.setObject(2, person.getNumber());
-            preparedStatement.setObject(3, person.getAddress());
-            preparedStatement.setObject(4, new Date(person.getDate().getTime()));
+            preparedStatement.setString(1, person.getName());
+            preparedStatement.setLong(2, person.getNumber());
+            preparedStatement.setString(3, person.getAddress());
+            preparedStatement.setDate(4, new Date(person.getDate().getTime()));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,11 +67,11 @@ public class Person_MySQL_DAO implements DAO_CRUD<Person, Integer> {
 
     @Override
     public void delete(Person person) {
-        deletePeople(person.getId());
+        deletePerson(person.getId());
     }
 
 
-    public void deletePeople(int id) {
+    public void deletePerson(int id) {
         try (PreparedStatement preparedStatement = connection
                 .prepareStatement("DELETE FROM persons WHERE id=?")) {
             preparedStatement.setInt(1, id);
@@ -83,7 +83,7 @@ public class Person_MySQL_DAO implements DAO_CRUD<Person, Integer> {
 
     @Override
     public List<Person> readAll() {
-        List<Person> peoples = new ArrayList<Person>();
+        List<Person> peoples = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT * FROM persons");
             while (rs.next()) {

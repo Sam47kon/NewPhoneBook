@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <div>
-    <div>
-        <a href="index.jsp"> Вернутся в таблицу</a>
-    </div>
-<div>
-<a href="/index"> Идти в таблицу через сервлет</a>
+    <a href="index.jsp"> Вернутся в таблицу</a>
 </div>
+<div>
+    <a href="/index"> Идти в таблицу через сервлет</a>
+</div>
+<div>
+    <h1>Добавление записи</h1>
+</div>
+<div>
     <form action="/addnewperson" method="post">
         <div>
             <label for="myname">Name </label>
@@ -26,7 +29,7 @@
             <label for="mydate">Date </label>
             <input type="date" id="mydate" name="date" placeholder="Enter date...">
         </div>
-        <button type="submit" name="submit" value="submit">Submit</a></button>
+        <button type="submit" name="submit" value="submit">Submit</button>
     </form>
 </div>
 </html>

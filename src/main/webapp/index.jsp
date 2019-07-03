@@ -27,23 +27,22 @@
         try {
         Connection connection = DB_Connection_JDBC_MySQL.getConnection();
         Person_MySQL_DAO entity = new Person_MySQL_DAO(connection);
-        Iterator
-        <Person> itr = entity.readAll().iterator();
+        Iterator itr = entity.readAll().iterator();
             while (itr.hasNext()) {
-            Person person = itr.next();
+        Person person = (Person) itr.next();
             %>
             <tr>
                 <td><%=person.getId()%></td>
                 <td><%=person.getName()%></td>
-                <td><%=person.getNumber()%></td>
+                <td><%=person.getNumber()==0?"":person.getNumber()%></td>
                 <td><%=person.getAddress()%></td>
                 <td><%=person.getDate()%></td>
                 <td>
                     <button type="button">
-                        <a href="EditPerson.jsp?u=<%=person.getId()%>"> Edit</a>
+                        <a href='EditPerson.jsp?id=<%=person.getId()%>'> Edit</a>
                     </button>
                     <button type="button">
-                        <a href="DeletePerson.jsp?d=<%=person.getId()%>"> Delete</a>
+                        <a href="/deleteperson?id=<%=person.getId()%>"> Delete</a>
                     </button>
                 </td>
             </tr>
