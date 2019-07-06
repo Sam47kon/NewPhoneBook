@@ -1,19 +1,32 @@
 package Model;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Person {
-
+@Entity
+@Table(name = "persons")
+public class Person_Hibernate {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "number")
     private long number;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "date")
     private Date date;
 
-    public Person() {
+    public Person_Hibernate() {
     }
 
-    public Person(int id, String name, long number, String address, String date) {
+    public Person_Hibernate(int id, String name, long number, String address, String date) {
         this.id = id;
         this.name = name;
         this.number = number;
@@ -21,7 +34,7 @@ public class Person {
         this.date = getParseDate(date);
     }
 
-    public Person(String name, long number, String address, String date) {
+    public Person_Hibernate(String name, long number, String address, String date) {
         this.name = name;
         this.number = number;
         this.address = address;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm">
+    <class name="Model.Person_Hibernate" table="persons">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="number" column="number" type="java.lang.Long"/>
+        <property name="address" column="address" type="java.lang.String"/>
+        <property name="date" column="date" type="java.util.Date"/>
+
+    </class>
+</hibernate-mapping>

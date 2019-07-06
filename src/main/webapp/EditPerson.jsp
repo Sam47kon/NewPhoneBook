@@ -1,4 +1,4 @@
-<%@page import="Dao.Person_MySQL_DAO"%>
+<%@page import="Dao.Impl.Person_MySQL_DAO"%>
 <%@page import="Model.Person"%>
 <%@page import="Util.DB_Connection_JDBC_MySQL"%>
 <%@page import="java.sql.Connection"%>

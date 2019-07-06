@@ -1,6 +1,6 @@
 package Servlets;
 
-import Dao.Person_MySQL_DAO;
+import Dao.Impl.Person_MySQL_DAO;
 import Util.DB_Connection_JDBC_MySQL;
 
 import javax.servlet.annotation.WebServlet;
