@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DB_Connection_JDBC_MySQL {
+public class DB_Connection_JDBC_MySQL { // TODO изменить наподобии хибернейт_коннект
 
     public static Connection getConnection() {
         Properties properties = new Properties();
